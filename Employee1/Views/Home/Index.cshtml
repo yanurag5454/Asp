@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Employee1.Models.Employee>
+
+<style>
+    .employee-table {
+        border: 2px solid #000; 
+        border-collapse: collapse; 
+        width: 100%;
+        margin: 20px 0;
+    }
+
+     .employee-table th,
+        .employee-table td {
+            border: 1px solid #000; 
+            padding: 8px;
+            text-align: left;
+        }
+
+        .employee-table th {
+            background-color: #f2f2f2; 
+            font-weight: bold; 
+        }
+
+        .employee-table tr:nth-child(even) {
+            background-color: #f9f9f9; 
+        }
+</style>
+
+<div>
+    <a asp-controller="Home" asp-action="Create" class="btn-add">Add New Employee</a>
+</div>
+
+<table class="employee-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Joining Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>@data.Id</td>
+                <td>@data.Name</td>
+                <td>@data.Salary</td>
+                <td>@data.Email</td>
+                <td>@data.Department</td>
+                <td>@data.JoiningDate.ToString("yyyy-MM-dd")</td>
+                <td class="action-links">
+                    <a asp-controller="Home" asp-action="Edit" class="btn-edit" >Edit</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
